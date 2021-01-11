@@ -1,10 +1,12 @@
 package com.zhx.baselibrary.utils;
 
 import android.Manifest;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.util.Log;
+import android.util.LruCache;
 
 
 import java.io.File;
@@ -21,7 +23,6 @@ import java.util.Locale;
 
 public class Logger {
     private static boolean sShowLog = true;
-
     /**
      * 是否保存为日志文件，debug apk专用，且自行预先解决外部存储权限
      */
@@ -135,7 +136,7 @@ public class Logger {
      * @return
      */
     public static String getFile() {
-        File cacheDir = new File(Environment.getExternalStorageDirectory() + File.separator + "com.wanmei.wmsecuritytoken" + File.separator + "log");
+        File cacheDir = new File(Environment.getExternalStorageDirectory() + File.separator + "com.zhx.wmsecuritytoken" + File.separator + "log");
         if (!cacheDir.exists()) {
             cacheDir.mkdirs();
         }

@@ -1,4 +1,4 @@
-## 【A】Framework源码 -- Fragment原理
+## 【A】Fragment原理
 
 
 
@@ -7,6 +7,9 @@
 -  fragment的生命周期
 -  fragment保存数据问题
 -  fragment调用setRetainInstance导致的生命周期问题
+-  Activity和Fragment的onActivityResult回调
+-  ViewPager中Fragment的缓存
+-  
 
 
 

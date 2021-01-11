@@ -2,6 +2,11 @@
 
 > C -> JNI -> C++ ->NDK开发工具链 -> Linux -> 编译so ->音视频ffmpeg、opencv、openGL
 
+### 面试问题
+
+1. 如何在JNI中注册native函数，有几种方式
+2. 
+
 
 
 ###  IDE下载安装

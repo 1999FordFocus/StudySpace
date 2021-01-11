@@ -17,7 +17,9 @@
 
 
 
-### OkHttp 
+
+
+### Volley理解与使用与优化
 
 
 
@@ -27,7 +29,15 @@
 
 
 
-### Retrofit
+### OkHttp 理解与使用与优化
+
+
+
+#### Okhttp的问题与优化
+
+
+
+#### HttpUrlConnection与okHttp
 
 
 
@@ -35,7 +45,15 @@
 
 
 
-### Socket --Apache  Mina
+### Retrofit 理解与使用与优化
+
+
+
+
+
+
+
+### Socket框架 -- Apache  Mina 理解与使用与优化
 
 
 
@@ -45,7 +63,15 @@
 
 
 
-### Volley
+
+
+
+
+
+
+
+
+### 
 
 
 
@@ -58,6 +84,48 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 基于WebSocket 的 Java-WebSocket框架
+
+
+
+
+
+https://github.com/TooTallNate/Java-WebSocket
 
 
 

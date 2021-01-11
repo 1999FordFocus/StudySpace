@@ -97,11 +97,14 @@ java中主要以多线程方式实现并发
 
 > CurrentHashMap 读写锁是如何实现的？
 
-```
-CurrentHashMap 读写锁是如何实现的？ 答 ：如果没有hash冲突的情况下，使用CAS进行插入，如果有hash冲突，使用synchronized加锁进行插入。当链表长度大于8且数据长度>=64时，会使用红黑树替代链表。 ReentrantReadWriteLock类中有readLock()和writeLock()方法可以分别获取WriteLock和ReadLock对象，调用他们的lock方法，就可以实现读写锁。实现原理就是AQS的acquire和acquireShared方法。
+```markdown
+如果没有hash冲突的情况下，使用CAS进行插入，如果有hash冲突，使用synchronized加锁进行插入。
+当链表长度大于8且数据长度>=64时，会使用红黑树替代链表。 
+ReentrantReadWriteLock类中有readLock()和writeLock()方法可以分别获取WriteLock和ReadLock对象，调用他们的lock方法，就可以实现读写锁。实现原理就是AQS的acquire和acquireShared方法。
 ```
 
-
+> concurrentHashMap会出现modifyCountException么?
+>
 
 
 

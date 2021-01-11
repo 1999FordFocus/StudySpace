@@ -1,0 +1,40 @@
+apply from: "../moudle_config.gradle"
+
+android {
+    defaultConfig {
+        if(isRunModule.toBoolean()){
+            applicationId "com.zhx.moudle.flow_layout"
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+    resourcePrefix "login_"
+
+    signingConfigs {
+
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+}
+
+dependencies {
+    implementation project(':baselibrary')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation 'com.alibaba:fastjson:1.2.58'
+    implementation 'com.squareup.okhttp3:okhttp:3.14.1'
+}

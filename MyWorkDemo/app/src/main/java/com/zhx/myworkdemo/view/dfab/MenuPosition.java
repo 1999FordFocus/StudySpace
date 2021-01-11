@@ -34,7 +34,6 @@ public class MenuPosition {
         int screenWidth = ScreenUtils.getScreenWidth(anchor.getContext());
         int screenHeight = ScreenUtils.getScreenHeight(anchor.getContext());
 
-        LinkedList
         boolean isLeft = anchor.getX() < screenWidth >> 1;
         Logger.d("isLeft=" + isLeft);
 

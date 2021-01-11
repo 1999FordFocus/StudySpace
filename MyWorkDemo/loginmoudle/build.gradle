@@ -3,7 +3,7 @@ apply from: "../moudle_config.gradle"
 android {
     defaultConfig {
         if(isRunModule.toBoolean()){
-            applicationId "com.wanmei.show.fans"
+            applicationId "com.zhx.show.fans"
         }
         javaCompileOptions {
             annotationProcessorOptions {
@@ -12,24 +12,6 @@ android {
         }
     }
     resourcePrefix "login_"
-
-    signingConfigs {
-        release {
-            storeFile file("keystore.jks")
-            storePassword "show@173"
-            keyAlias "wanmeiShow"
-            keyPassword "show@173"
-            v2SigningEnabled false
-        }
-        debug {
-            storeFile file("keystore.jks")
-            storePassword "show@173"
-            keyAlias "wanmeiShow"
-            keyPassword "show@173"
-            v2SigningEnabled false
-        }
-    }
-
 
     buildTypes {
         release {

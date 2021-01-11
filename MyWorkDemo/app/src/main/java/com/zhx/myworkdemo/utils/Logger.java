@@ -19,7 +19,6 @@ import java.util.Locale;
 
 /**
  * 可以显示行数的log,减少打log的复杂度
- * Created by panxinghai on 2017/9/20.
  */
 
 public class Logger {
@@ -79,7 +78,7 @@ public class Logger {
         String methodName = stackTraceElements[index].getMethodName();
         int lineNumber = stackTraceElements[index].getLineNumber();
 
-        String t = tag == null ? "WMOTP" : tag;
+        String t = tag == null ? "zhx" : tag;
         methodName = methodName.substring(0, 1).toUpperCase() + methodName.substring(1);
         StringBuilder sb = new StringBuilder();
         if (sShowLog) {
@@ -151,7 +150,7 @@ public class Logger {
      * @return
      */
     public static String getFile() {
-        File cacheDir = new File(Environment.getExternalStorageDirectory() + File.separator + "com.wanmei.wmsecuritytoken" + File.separator + "log");
+        File cacheDir = new File(Environment.getExternalStorageDirectory() + File.separator + "com.zhx.demo" + File.separator + "log");
         if (!cacheDir.exists()) {
             cacheDir.mkdirs();
         }

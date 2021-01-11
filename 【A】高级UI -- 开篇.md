@@ -10,6 +10,18 @@
 
 ### 输出倒逼输入
 
+- View绘制机制，onMeasure onLayout ,onDraw方法的调用机制谈一下
+
+- 硬件加速原理。
+
+- 双缓冲机制。
+
+- 矢量图的原理。
+
+- 【设计】设计检测过度绘制的工具，要具体到view。
+
+- 
+
 - 自定义控件有哪几种实现方式？在实现自定义控件时需要重写哪几个构造方法？ 
 
 - 自定义view的步骤，Android的wrap_content是如何计算的
@@ -21,8 +33,6 @@
 - **使用自动布局，把三个view横向等宽等间距（与父view边距也相等）排列。**
 
 - 如何绘制大于父view的子view
-
-- View绘制机制，onMeasure onLayout ,onDraw方法的调用机制谈一下
 
 - 
 
@@ -60,37 +70,46 @@
 
 ### 知识体系导图
 
-- 自定义View
-  
+- View绘制原理
+- 自定义View/ViewGroup基本流程
   - FlowLayout实战
-  
-- 布局过程与View绘制原理
-
+  - 自定义Banner实战
 - View事件分发机制
   
   - PhotoView事件分发
-  
 - 滑动冲突处理
   - 京东淘宝首页二级联动
   - NestedScrollView嵌套滑动机制分析
-  
+  - 协调者布局 CoordinatorLayout、CollapsingToolbarLayout
 - Android 动画实战与原理
   
   - 灵动的锦鲤
-  
 - 常用UI组件 -- FrameLayout、LinearLayout
-
-- 常用UI组件 -- 协调者布局 CoordinatorLayout、CollapsingToolbarLayout
-
-- 常用UI组件 --约束布局CoordinatorLayout
-
-- 常用UI组件--ViewPager与Banner实战
-
-- 常用UI组件 -- RecycleView
-
-  
+- 常用UI组件 -- RecycleView原理
 
 
+
+### 文章导航
+
+高级UI系列一：从布局文件解析过程看 Activiy、Window、View的关系
+
+高级UI系列二：View的绘制过程
+
+高级UI系列三：自定义View/ViewGroup基本流程、LinearLayout
+
+高级UI系列四：自定义ViewGroup实践 -- 流式布局FlowLayout
+
+高级UI系列五：自定义View实践 -- 灵动的锦鲤
+
+高级UI系列六：View事件分发机制
+
+高级UI系列七：View事件分发实战--自定义PhotoView
+
+高级UI系列八：解决滑动冲突、NestedScrollView嵌套滑动机制分析
+
+高级UI系列九：RecycleView使用与原理
+
+高级UI系列十：动画原理
 
 
 

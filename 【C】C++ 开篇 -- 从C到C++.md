@@ -2,9 +2,23 @@
 
 
 
-## **C++ 入门课**
+## C++ 开篇 -- 从C到C++
 
-### ** IDE下载安装**
+### 面试问题
+
+1. C++面向对象特性
+2. 讲一下内联函数 ，内联函数和#define区别。inline 内联什么时候失效？为什么循环、分支不能设为内联？如果设为内联会怎样？
+3. 静态链接和动态链接的区别？哪种更快？哪种生成的可执行文件更大？
+4. main函数之前和之后都会做什么工作
+5. 内存空间分为哪几个部分？全局变量存在哪个部分？
+6. 指针和引用的区别
+7. 
+
+
+
+
+
+###  IDE下载安装
 
 1. CLion + MinGW64 ( Android开发者对 jetbean出品的编译器用着顺手)
 
@@ -33,19 +47,82 @@ https://www.cnblogs.com/attentle/p/12652512.html
 
 
 
-### ** 第一个c++程序**
+### C++ 知识大纲
+
+
+
+封装
+
+继承
+
+多态
+
+模版
+
+
+
+
+
+
+
+
+
+
+
+
+
+### 第一个c++程序
 
  输入半径，求圆的周长面积:
 
-![image-20200822182405100](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200822182405100.png)
-
-
-
 > 思考类与对象的关系：c++编译器是如何区分是c1,c2,c3对象调用了类的方法？
->
-> 
 
-### ** C/C++文件编译过程**
+
+
+```c++
+#include <iostream>
+/**
+ * 第一个c++程序：求圆的周长和面积
+ * @return
+ */
+using namespace std;
+
+class MyCircle {
+public:
+    double getMR() {
+        return m_r;
+    }
+
+    void setMR(double mR) {
+        m_r = mR;
+    }
+
+    double getMS() {
+        m_s = 3.14 * m_r * m_r;
+        return m_s;
+    }
+
+private:
+    double m_r;
+    double m_s;
+};
+
+int main() {
+    cout << "请输入半径：" << std::endl;
+    MyCircle c1{};
+    double r;
+    cin >> r;
+    c1.setMR(r);
+    cout << "圆的面积是：" << c1.getMS() << std::endl;
+    return 0;
+}
+```
+
+
+
+
+
+### C/C++文件编译过程
 
 1. 预处理
 
@@ -83,7 +160,7 @@ https://www.cnblogs.com/attentle/p/12652512.html
 
 
 
-### ** C++对c语言的扩展**
+### C++对c语言的扩展
 
 - #### namespace作用域
 
@@ -101,7 +178,7 @@ https://www.cnblogs.com/attentle/p/12652512.html
 
   c语言中认为struct定义了一组变量的集合，而不是一种类型
 
-  c++中struct关键字和class关键字功能一样的，但是还是有区别
+  c++中struct关键字和class关键字功能一样的，但是还是有区别,class成员默认private，struct默认public
 
 - #### c++更强调类型（所有的变量和函数都必须有类型）
 
@@ -124,6 +201,8 @@ https://www.cnblogs.com/attentle/p/12652512.html
   *p =  20;
   ```
 
+  
+
   c++ 中const修饰的是一个真正的常量；原因是c++编译器扫描到const int a = 10; 时会把 a =10 以key-value形式放到符号表里。当const常量为全局，并且需要在其他文件中使用的时候、当使用&操作取const常量地址的是时候会分配新的内存空间，而不是在原变量a上直接操作。
 
   
@@ -141,15 +220,17 @@ https://www.cnblogs.com/attentle/p/12652512.html
   ​				作用类似: const int a =5 ,#define a 5
 
   ​		不同点：
-
-  define由预处理器处理,是单纯的文本替换（没有作用域限制，除非使用#undef a卸载掉）const由编译器处理，提供类型和作用域检查。                                                                                                                                                                
+  
+  #define由预处理器处理,是单纯的文本替换（没有作用域限制，除非使用#undef a卸载掉）const由编译器处理，提供类型和作用域检查。                                                                                                                                                                
 
 
 
 -  #### **引用** 
 
-  1. 引用概念和用法
+  此处简要介绍引用相关的知识点
 
+  1. 引用概念和用法
+  
      变量的别名
   
      ```c++
@@ -157,11 +238,11 @@ https://www.cnblogs.com/attentle/p/12652512.html
      int &b = a;
      cout<<"b = "<<b;
      b = 100;
-   cout<<"a = "<<b;
+ cout<<"a = "<<b;
      ```
 
      > 引用的性质：普通引用必须初始化（依附于某个变量）
-
+  
   2. **引用作函数参数、引用作返回值、引用作左值**
   
      ```c++
@@ -169,30 +250,23 @@ https://www.cnblogs.com/attentle/p/12652512.html
      {  
      	int a =10;  
      	return a;
-   }
+ }
      ```
 
-     *如果函数返回栈上的引用（引用作返回值），可能会有问题。不可以作为其他引用的初始值（不能用其他引用变量来接收）*
+     如果函数返回栈上的引用（引用作返回值），可能会有问题。不可以作为其他引用的初始值（不能用其他引用变量来接收）
 
-     
+     函数返回值是引用（一块内存空间），用什么类型去接收，结果不同
 
-     函数返回值是引用（一块内存空间），用什么类型去接收，结果不同：
-
-  ![image-20200822212311373](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200822212311373.png)
-
-  ​       
-
-  ​	   返回引用的函数当左值（特别适用于链式编程）：
   
-  ​		
+​	   返回引用的函数当左值（特别适用于链式编程）
   
-  
+​			
   
   3. 复杂数据类型的引用
   
   ​        别名等同于指针方式修改内存
   
-  ![image-20200822205759592](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200822205759592.png)
+  
 
 而下面函数对于形参pT的修改，不会影响到实参
 
@@ -206,31 +280,17 @@ void printfT(Teacher pT)
 
 ​			4. 引用的本质
 
-​					![image-20200822210317308](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200822210317308.png)
+​				普通引用内部实现是指针常量，有自己的内存空间，也跟原变量操作同一块内存。
 
-​				普通引用内部实现是常量指针，有自己的内存空间，也跟原变量操作同一块内存。
+​			5.指针的引用
 
-​				
-
-
-
-
-
-
-
-
-
-
-
-
+​			6. 常量引用
 
 - #### 新增bool类型
 
   占用 1个字节，值为0或1
 
 - #### 三目运算符 
-
-  ![image-20200822201241699](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200822201241699.png)
 
   c语言中表达式的返回的是一个值，
 
@@ -256,11 +316,28 @@ void printfT(Teacher pT)
 
 
 
+### 
 
 
 
 
 
+
+
+
+
+
+
+
+
+### 学习资源
+
+- 慕课网-C++远征系列课（共七篇）
+
+- B站 - 黑马程序员教程
+  https://b23.tv/WbL7JB
+
+  
 
 
 

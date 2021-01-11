@@ -16,6 +16,14 @@
 
 
 
+### 项目踩坑记录
+
+1. **Activity onBackPressed回调未被调用 ？**
+
+   检查是不是Fragment已经监听了onKey() 等事件，消耗掉了back键事件。
+
+   > 源码追踪
+
 
 
 ### 资源参考

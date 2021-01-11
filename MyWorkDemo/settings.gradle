@@ -1,5 +1,7 @@
+include ':flow_layout_moudle'
+//include ':webview'
 include ':algorithm_moudle'
-include ':app'
+//include ':app'
 include    ':baselibrary'
 //include    ':loginmoudle'
 include ':Javalib'

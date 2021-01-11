@@ -475,6 +475,10 @@ epoll_create创建一个epoll对象，也是一个文件，对应着一个文件
 
 #### HTTP 协议
 
+##### HTTP 1.1
+
+###### HTTP请求
+
 1. **请求的准备**
 
    请求地址发给DNS服务器，将域名解析成为IP地址。
@@ -565,9 +569,9 @@ epoll_create创建一个epoll对象，也是一个文件，对应着一个文件
 
 
 
-**ETag与HTTP 缓存机制**
+###### **HTTP 缓存机制**
 
-请求头、返回头共同实现缓存机制。
+主要利用Cache-control和ETag两个字段，通过客户端服务端配合来实现缓存机制。
 
 https://en.wikipedia.org/wiki/Web_cache#Cache-control
 
@@ -575,11 +579,33 @@ https://en.wikipedia.org/wiki/HTTP_ETag
 
 
 
-Etag 即实体标记，是与特定资源关联的确定值。资源更新后ETag也会随之更新。
+okHttp中就是使用了Http的缓存机制，而不是像Volley等框架那样自己写一套缓存策略。
 
 
 
-**使用Cookie的状态管理**
+Cache-Control主要包含几个值：
+
+private ： 只有客户端可以缓存；
+
+public ： 客户端和代理服务端都可以缓存；
+
+max-age：缓存的过期时间；
+
+no-cache：需要对比缓存来验证缓存数据；
+
+no-store ：不进行缓存；
+
+
+
+Etag 即实体标记，是与服务端特定资源关联的确定值。资源更新后ETag也会随之更新。当客户端第一次请求时，服务端会下发当前请求资源的标识码ETag，下次请求时，客户端通过header里的If-None-Match将ETag带上，服务端对比资源ETag，如果一样，表示没有更新，返回304.
+
+
+
+
+
+
+
+###### **使用Cookie的状态管理**
 
 HTTP是无状态协议，优点是减少服务器的CPU及内存资源消耗。Cookie技术是通过在请求和相应报文中写入Set-Cookie的首部字段信息，通知客户端保存Cookie。当下次客户端再往服务端发起请求时，客户端自动在请求报文中加入Cookie。服务端检查后便可得到之前的状态信息。大小一般不超过4k
 
@@ -595,7 +621,7 @@ SessionID是Cookie和session的一道桥梁。
 
 
 
-**Http1.1的不足：**
+###### **Http1.1的不足：**
 
 - ​	Http 1.1 在应用层以纯文本形式通信
 
@@ -788,7 +814,47 @@ TLS（Transport Layer Security）是以SSL为原型开发的协议。当前主�
 
 
 
+##### WebSocket协议
 
+​	WebSocket是一个应用层通信协议，虽然带有Socket字样，但是它并不是基于Socket的封装，甚至风马牛不相及。同为应用层协议，WebSocket协议跟http协议关系要更近一些。
+
+​	所谓“协议”，是通信双方约定的一种合作规范，包括如何建立连接、链接地址格式什么样子、请求头返响应头格式、字段意义等等，两个协议对比来看更直观：
+
+1. http协议请求地址是以" http://"开头，WebSocket协议是以 “ws://”开头。
+
+2. http协议头（略）
+
+   WebSocket协议请求头：	
+
+   ```
+   GET /webfin/websocket/ HTTP/1.1
+   Host: localhost
+   Upgrade: websocket
+   Connection: Upgrade
+   Sec-WebSocket-Key: xqBt3ImNzJbYqRINxEFlkg==
+   Origin: http://localhost:8080
+   Sec-WebSocket-Version: 13
+   ```
+
+   ​		类似传统HTTP报文，Upgrade：websocket参数值表明这是WebSocket类型请求，Sec-WebSocket-Key是WebSocket客户端发送的一个 base64编码的密文，要求服务端必须返回一个对应加密的Sec-WebSocket-Accept应答，否则客户端会抛出Error during WebSocket handshake错误，并关闭连接
+
+   3. 建立连接与通信
+
+      WebSocket要在开始建立连接时，发送一次http请求
+
+      <img src="https://pic3.zhimg.com/80/v2-9e38e379c1597bd3e45ef5f37c08eaeb_1440w.jpg?source=1940ef5c" alt="img" style="zoom:48%;" />
+
+   4. 
+
+**WebSocket协议存在的意义**
+
+​	**持久连接**
+
+​		WebSocket通过Close关闭连接、Ping/Pong 来探测/回应链路是否畅通。
+
+​	**全双工通信**	
+
+​		http是无状态、只能由客户端发起的单向通信协议。在WebSocket协议出现以前，想要基于http协议实现全双工通信，只能使用轮询，**WebSocket协议本身就是针对于全双工通信设计的，通信双方都可以发起/响应请求。**
 
 
 
@@ -937,6 +1003,15 @@ HttpDNS其实就是自己搭建基于HTTP协议的DNS服务器集群，分布在
 
 ### 参考资源
 
+- 极客时间  趣谈网络协议 -- 第一模块、第二模块
+
+  https://time.geekbang.org/column/intro/85
+
+  
+
+- 腾讯课堂 图灵学院-程序员必会网络知识-重学计算机网络底层原理
+
+- 
 
 
 

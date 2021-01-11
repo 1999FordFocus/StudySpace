@@ -1,4 +1,8 @@
-## **C++ 基础 -- 引用**
+## C++ 基础 -- 引用
+
+> 天地交，泰；后以财成天地之道，辅相天地之宜，以左右民。--《周易·泰》
+
+
 
 ### 引用的概念
 
@@ -38,8 +42,6 @@ int& getA2()
 
 函数返回值是引用（一块内存空间），用什么类型去接收，结果不同：
 
-![image-20200822212311373](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200822212311373.png)
-
 ####  引用作左值
 
 ​	   
@@ -70,9 +72,9 @@ void printfT(Teacher pT)
 
 ### 引用的本质
 
-​					![image-20200822210317308](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200822210317308.png)
-
 ​				普通引用内部实现是常量指针，有自己的内存空间，也跟原变量操作同一块内存。
+
+
 
 ​				
 
@@ -113,12 +115,6 @@ int main() {
     return 0;
 }
 ```
-
-
-
-![image-20200827202014736](C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20200827202014736.png)
-
-
 
 
 

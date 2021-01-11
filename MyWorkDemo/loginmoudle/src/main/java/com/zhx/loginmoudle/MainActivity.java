@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.wanmei.show.fans.R;
+import com.zhx.show.fans.R;
 
 import java.util.ArrayList;
 import java.util.List;
