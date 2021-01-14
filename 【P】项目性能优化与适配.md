@@ -1015,7 +1015,7 @@ chain属性
 
 
 
-### 三、SDK版本适配
+### 三、机型&SDK版本适配
 
 - Fragment onAttatch() 方法版本兼容
 
@@ -1025,7 +1025,13 @@ chain属性
 
 
 
+- ​     DialogFragment 6.0以下自带标题栏
 
+  window.requestFeature(Window.FEATURE_NO_TITLE);
+
+- Webview 绘制 低版本设备，绘制，需要手动开启硬件加速
+
+  高版本设备自动开启
 
 
 

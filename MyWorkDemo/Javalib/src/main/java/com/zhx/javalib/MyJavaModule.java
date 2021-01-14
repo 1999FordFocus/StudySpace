@@ -6,6 +6,8 @@ import com.zhx.javalib.generic.Banana;
 import com.zhx.javalib.generic.Box;
 import com.zhx.javalib.generic.ColorBox;
 import com.zhx.javalib.generic.Fruit;
+import com.zhx.javalib.jvm.TestChildJVM;
+import com.zhx.javalib.jvm.TestJVM;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -74,7 +76,9 @@ public class MyJavaModule {
 //            e.printStackTrace();
 //        }
 
-        new MyThread1().start();
+//        new MyThread1().start();
+
+        new TestChildJVM();
     }
 
     /**
