@@ -3,16 +3,17 @@ package com.zhx._04_stack_queue;
 import com.zhx.TestHelper;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class TestStackAndQueue {
 
     public static void main(String[] args) {
-        //1. æ‹¬å·åŒ¹é…
+        //1. À¨ºÅÆ¥Åä
 //        String testParentheses = "{{}}{}}";
 //        boolean isValid = StackAlgorithm.isParenthesesValid(testParentheses);
 //        TestHelper.print("check string", testParentheses, "result = "+isValid);
 
-        //2. åŸºäºé“¾è¡¨å®ç°æ ˆ
+        //2. »ùÓÚÁ´±íÊµÏÖÕ»
 //        StackAlgorithm.StackBaseOnSingleLinkedList<String> stack = new StackAlgorithm.StackBaseOnSingleLinkedList<>();
 //        stack.push("Jan");
 //        stack.push("Feb");
@@ -21,7 +22,7 @@ public class TestStackAndQueue {
 //        TestHelper.print("pop stack2", stack.pop());
 //        TestHelper.print("pop stack3", stack.pop());
 
-        //3. äºŒå‰æ ‘å‰ä¸­ååºéå†
+        //3. ¶ş²æÊ÷Ç°ÖĞºóĞò±éÀú
 //        StackAlgorithm.TreeNode treeNode = new StackAlgorithm.TreeNode(1);
 //        treeNode.left = new StackAlgorithm.TreeNode(2);
 //        treeNode.left.left = new StackAlgorithm.TreeNode(4);
@@ -37,5 +38,14 @@ public class TestStackAndQueue {
 //        StackAlgorithm.preorderTraversalNonRecurse(treeNode);
 //        StackAlgorithm.inorderTraversalNonRecurse(treeNode);
 //        StackAlgorithm.postorderTraversalNonRecurse(treeNode);
+
+        //Queue base on Stack
+        QueueAlgorithm.QueueBaseOnStack queue = new QueueAlgorithm.QueueBaseOnStack();
+        queue.push(1);
+        queue.push(2);
+        queue.push(3);
+        queue.pop();
+        TestHelper.print("elements in queue :");
+        queue.printAll();
     }
 }

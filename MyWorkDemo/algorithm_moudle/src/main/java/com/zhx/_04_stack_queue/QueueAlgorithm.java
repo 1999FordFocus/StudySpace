@@ -1,5 +1,7 @@
 package com.zhx._04_stack_queue;
 
+import java.util.Stack;
+
 class QueueAlgorithm {
     //数组实现队列
     static class QueueBaseOnArray {
@@ -35,7 +37,7 @@ class QueueAlgorithm {
         }
 
         public String dequeue() {
-            if (head == tail){
+            if (head == tail) {
                 return null;
             }
             String ret = items[head];
@@ -43,4 +45,68 @@ class QueueAlgorithm {
             return ret;
         }
     }
+
+    static class QueueBaseOnStack {
+        private Stack<Integer> inputStack;
+        private Stack<Integer> outputStack;
+
+        public QueueBaseOnStack() {
+            inputStack = new Stack<>();
+            outputStack = new Stack<>();
+        }
+
+        public void push(int x) {
+            inputStack.push(x);
+        }
+
+        public int peek() {
+            if (outputStack.isEmpty()) {
+                while (!inputStack.empty()) {
+                    outputStack.push(inputStack.pop());
+                }
+            }
+            return outputStack.peek();
+        }
+
+        public int pop() {
+            if (outputStack.isEmpty()) {
+                while (!inputStack.empty()) {
+                    outputStack.push(inputStack.pop());
+                }
+            }
+            return outputStack.pop();
+        }
+
+        public boolean empty() {
+            return inputStack.isEmpty() && outputStack.isEmpty();
+        }
+    }
+
+    //Binary tree DFS using Queue
+
+
+    //"之"
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
