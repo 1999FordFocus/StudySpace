@@ -30,7 +30,7 @@
 
 
 
-### 构建过程
+### Android Studio构建过程
 
 #### APK结构
 
@@ -149,16 +149,6 @@ R文件中 id都是static final 修饰的静态常量，由于java编译器的�
 
 
 
-#### MultiDex原理
-
-
-
-
-
-
-
-
-
 
 
 
@@ -181,7 +171,9 @@ R文件中 id都是static final 修饰的静态常量，由于java编译器的�
 
 
 
-#### Gradle自动构建框架
+### Grade自动构建框架是如何实现构建过程的？
+
+
 
 ​	现在的Android集成开发工具Android Studio 采用Gradle作为 项目自动构建框架。开发者只需简单的操作，就能得到想要的编译产物，gradle框架内部全权处理了构建流程。
 
@@ -197,7 +189,7 @@ R文件中 id都是static final 修饰的静态常量，由于java编译器的�
 
  3. 执行阶段
 
-    ​     执行阶段，Configuration对象通过CompositeBuildClassPathInitializer#execute(Configuration)传入并获取其中的配置。IncludedBuildTaskGraph.addTask方法添加build task，构建生成Task Graph。其addTask方法中调用到internalDefaultIncludedBuildController#queueForExecution(String taskPath) 将Task添加到LinkedHashMap中准备执行，继而doBuild方法执行各个task:
+    ​     执行阶段，Configuration对象通过CompositeBuildClassPathInitializer#execute(Configuration)传入并获取其中的配置。IncludedBuildTaskGraph.addTask方法添加build task，构建生成Task DAG（有向无环图）。其addTask方法中调用到internalDefaultIncludedBuildController#queueForExecution(String taskPath) 将Task添加到LinkedHashMap中准备执行，继而doBuild方法执行各个task:
 
 
 
@@ -225,27 +217,40 @@ R文件中 id都是static final 修饰的静态常量，由于java编译器的�
 
 
 
+接下来会根据DAG（有向无环图）的拓扑排序将Task顺序执行 ，它们对应着Android Studio构建的各个阶段。
+
+> 拓扑排序(Topological Order)是指，将一个有向无环图(Directed Acyclic Graph简称DAG)进行排序进而得到一个有序的线性序列。
+
+
+
 以上是gradle框架实现项目构建的大致流程。
 
 
 
-对于Gradle框架的学习至少还应该包括以下几方面内容：
+###### next ：
 
-- **Gradle API的使用 - 配置编译过程** 
+- **原理 -- Gradle自动框架源码解析**
 
-  
+  - Trasnform 与 Task 关系
+
+    https://juejin.cn/post/6875141808825991181
+
+    混淆、分包（multi-dex）原理、jar包合并
+
+
 
 - **自定义Gradle Plugin的实现**
-
-  
-
-- **原理 -- Gradle框架源码解析**
+  - 编译时字节码插桩技术
+  - SDK 打包插件
 
 
 
+- **Gradle API的使用 - 配置编译过程**
+  - 多渠道打包
 
+  - multidex 配置
 
-
+    
 
 ### 资源参考
 

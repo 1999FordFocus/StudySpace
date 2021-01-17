@@ -33,5 +33,8 @@ public class TestAlgorithm {
 //
 //        linkedList.deleteByValue(3);
 //        linkedList.printAll();
+
+        TestHelper.print(" Object.class.isArray()", Object.class.isArray()+"");
+        TestHelper.print(" Object[].class.isArray()", Object[].class.isArray()+"");
     }
 }

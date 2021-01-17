@@ -1,5 +1,9 @@
 package com.zhx._04_stack_queue;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 class QueueAlgorithm {
@@ -82,11 +86,93 @@ class QueueAlgorithm {
         }
     }
 
-    //Binary tree DFS using Queue
 
+    //Binary tree BFS using queue
+    public static class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
 
-    //"之"
+        public TreeNode(int value) {
+            this.val = value;
+        }
+    }
 
+    /**
+     * Binary tree BFS base on queue
+     *
+     * @param root
+     */
+    public static List<List<Integer>> bfsBaseOnQueue(TreeNode root) {
+        //using mutable tow-dimensional array to save result
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        //using queue to traversal the tree by level-order,using Pair<K,V> to save node and the level number the node in.
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.push(root);
+        List<Integer> level;
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+            level = new ArrayList<>();
+
+            for (int i = 0; i < count; i++) {
+                TreeNode node = queue.poll();
+                if (node == null) {
+                    continue;
+                }
+                //cause of FIFO , left child node first
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+                level.add(node.val);
+            }
+            res.add(level);
+        }
+        return res;
+    }
+
+    //"之"字/锯齿形打印二叉树
+    public static List<List<Integer>> bfsBaseOnQueueWithZhi(TreeNode root) {
+        //using mutable tow-dimensional array to save result
+        List<List<Integer>> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        //using queue to traversal the tree by level-order,using Pair<K,V> to save node and the level number the node in.
+        LinkedList<TreeNode> queue = new LinkedList<>();
+        queue.push(root);
+        List<Integer> level;
+        while (!queue.isEmpty()) {
+            int count = queue.size();
+            level = new ArrayList<>();
+
+            for (int i = 0; i < count; i++) {
+                TreeNode node = queue.poll();
+                if (node == null) {
+                    continue;
+                }
+                //cause of FIFO , left child node first
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+                level.add(node.val);
+            }
+            //calculate now finished levels
+            if (res.size() % 2 == 1){
+                Collections.reverse(level);
+            }
+            res.add(level);
+        }
+        return res;
+    }
 }
 
 

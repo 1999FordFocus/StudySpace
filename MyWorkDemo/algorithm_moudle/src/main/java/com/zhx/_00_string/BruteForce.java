@@ -18,8 +18,8 @@ public class BruteForce {
                 i++;
                 j++;
             } else {
-                i = i - j + 1;  //主串回溯j，再加1，从新开始匹配
-                j = 0; // 字串归 0
+                i = i - j + 1;
+                j = 0;
             }
         }
         if (j == pLength) {

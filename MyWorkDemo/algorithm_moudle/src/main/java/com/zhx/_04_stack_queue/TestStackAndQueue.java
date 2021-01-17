@@ -8,12 +8,10 @@ import java.util.Scanner;
 public class TestStackAndQueue {
 
     public static void main(String[] args) {
-        //1. 括号匹配
 //        String testParentheses = "{{}}{}}";
 //        boolean isValid = StackAlgorithm.isParenthesesValid(testParentheses);
 //        TestHelper.print("check string", testParentheses, "result = "+isValid);
 
-        //2. 基于链表实现栈
 //        StackAlgorithm.StackBaseOnSingleLinkedList<String> stack = new StackAlgorithm.StackBaseOnSingleLinkedList<>();
 //        stack.push("Jan");
 //        stack.push("Feb");
@@ -22,7 +20,6 @@ public class TestStackAndQueue {
 //        TestHelper.print("pop stack2", stack.pop());
 //        TestHelper.print("pop stack3", stack.pop());
 
-        //3. 二叉树前中后序遍历
 //        StackAlgorithm.TreeNode treeNode = new StackAlgorithm.TreeNode(1);
 //        treeNode.left = new StackAlgorithm.TreeNode(2);
 //        treeNode.left.left = new StackAlgorithm.TreeNode(4);
@@ -40,12 +37,20 @@ public class TestStackAndQueue {
 //        StackAlgorithm.postorderTraversalNonRecurse(treeNode);
 
         //Queue base on Stack
-        QueueAlgorithm.QueueBaseOnStack queue = new QueueAlgorithm.QueueBaseOnStack();
-        queue.push(1);
-        queue.push(2);
-        queue.push(3);
-        queue.pop();
-        TestHelper.print("elements in queue :");
-        queue.printAll();
+//        QueueAlgorithm.QueueBaseOnStack queue = new QueueAlgorithm.QueueBaseOnStack();
+//        queue.push(1);
+//        queue.push(2);
+//        queue.push(3);
+//        queue.pop();
+//        TestHelper.print("elements in queue :");
+
+        QueueAlgorithm.TreeNode treeNode = new QueueAlgorithm.TreeNode(1);
+        treeNode.left = new QueueAlgorithm.TreeNode(2);
+        treeNode.left.left = new QueueAlgorithm.TreeNode(4);
+        treeNode.left.right = new QueueAlgorithm.TreeNode(5);
+        treeNode.right = new QueueAlgorithm.TreeNode(3);
+        treeNode.right.left = new QueueAlgorithm.TreeNode(6);
+        treeNode.right.right = new QueueAlgorithm.TreeNode(7);
+        QueueAlgorithm.bfsBaseOnQueue(treeNode);
     }
 }

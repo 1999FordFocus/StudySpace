@@ -23,6 +23,7 @@ public class TestHelper {
             logStrBuilder.append(msg);
             logStrBuilder.append("\n");
         }
+
         System.out.print(logStrBuilder.toString());
     }
 

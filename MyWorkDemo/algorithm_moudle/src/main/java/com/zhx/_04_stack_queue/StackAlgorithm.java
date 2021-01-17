@@ -9,7 +9,7 @@ import java.util.Stack;
 /**
  * 栈相关算法
  */
-class StackAlgorithm {
+public class StackAlgorithm {
 
     /**
      * 1. 括号匹配
@@ -102,7 +102,7 @@ class StackAlgorithm {
     /**
      * 二叉树数据结构
      */
-    static class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;

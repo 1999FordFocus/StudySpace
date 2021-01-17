@@ -1,4 +1,5 @@
 apply from: "../moudle_config.gradle"
+//apply plugin: 'zhx.lifecycle.plugin'
 
 android {
     defaultConfig {
