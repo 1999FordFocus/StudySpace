@@ -11,19 +11,8 @@
 -  网络请求涉及，如何设计缓存
 -  retrofit与okhttp的关系，retrofit原理
 - socket相关实现 ，如何维持长连接、发送心跳包？
-- 网络层相关设计，volley底层实现，缓存相关 
 
-
-
-
-
-
-
-### Volley理解与使用与优化
-
-
-
-
+  
 
 
 
@@ -31,7 +20,9 @@
 
 ### OkHttp 理解与使用与优化
 
+#### Okhttp拦截器自定义
 
+1. 类似滴滴哆啦A梦，模拟断网、超时
 
 #### Okhttp的问题与优化
 
@@ -71,7 +62,7 @@
 
 
 
-### 
+### 性能优化 -- 网络优化
 
 
 
@@ -86,46 +77,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### 基于WebSocket 的 Java-WebSocket框架
-
-
-
-
-
-https://github.com/TooTallNate/Java-WebSocket
 
 
 

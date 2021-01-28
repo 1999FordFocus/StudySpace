@@ -49,19 +49,112 @@ https://www.cnblogs.com/attentle/p/12652512.html
 
 ### C++ 知识大纲
 
+#### 传统C++ ：C++98 知识体系
+
+- 基础语言特性
+
+  - 函数
+    - 函数基础
+    - 函数高级
+  - 内存四区 -- 栈区、堆区、全局区、代码区
+  - 指针
+  - 结构体
+  - C++中的引用
+  - 类和对象
+  - C++文件操作
+
+- 模版
+
+  - 
+
+- STL
+
+  - 
+
+    
 
 
-封装
 
-继承
+#### 现代C++：C++11/14新特性
 
-多态
-
-模版
-
-
-
-
+- 语言可用性的强化
+  - nullptr 与 constexpr
+  - 类型推导
+    - auto
+    - decltype
+    - 尾返回类型、auto 与 decltype 配合
+  - 区间迭代
+    - 基于范围的 for 循环
+  - 初始化列表
+    - std::initializer_list
+    - 统一初始化语法
+  - 模板增强
+    - 外部模板
+    - 尖括号 >
+    - 类型别名模板
+    - 变长参数模板
+  - 面向对象增强
+    - 委托构造
+    - 继承构造
+    - 显式虚函数重载
+      - override
+      - final
+    - 显式禁用默认函数
+  - 强类型枚举
+- 语言运行期的强化
+  - lambda 表达式
+    - lambda 表达式基础
+      - 值捕获
+      - 引用捕获
+      - 隐式捕获
+      - 表达式捕获
+    - 泛型 lambda
+  - 函数对象包装器
+    - std::function
+    - std::bind/std::placeholder
+  - 右值引用
+    - 左值、右值的纯右值、将亡值、右值
+    - 右值引用和左值引用
+    - 移动语义
+    - 完美转发
+- 对标准库的扩充: 新增容器
+  - std::array
+  - std::forward_list
+  - std::unordered_set
+  - std::unordered_map
+  - std::tuple
+    - 基本操作
+    - 运行期索引
+    - 合并与迭代
+- 对标准库的扩充: 智能指针和引用计数
+  - 引用计数
+  - std::shared_ptr
+  - std::make_shared
+  - std::unique_ptr
+  - std::weak_ptr
+- 对标准库的扩充: 正则表达式库
+  - 正则表达式简介
+    - 普通字符
+    - 特殊字符
+    - 限定符
+  - std::regex 及其相关
+    - std::regex
+    - std::regex_match
+    - std::match_results
+- 对标准库的扩充: 语言级线程支持
+  - std::thread
+  - std::mutex
+  - std::unique_lock
+  - std::future
+  - std::packaged_task
+  - std::condition_variable
+- 其他杂项
+  - 新类型
+    - long long int
+  - noexcept 的修饰和操作
+  - 字面量
+    - 原始字符串字面量
+    - 自定义字面量
 
 
 
@@ -258,14 +351,15 @@ int main() {
      函数返回值是引用（一块内存空间），用什么类型去接收，结果不同
 
   
+
 ​	   返回引用的函数当左值（特别适用于链式编程）
-  
+
 ​			
-  
+
   3. 复杂数据类型的引用
-  
+
   ​        别名等同于指针方式修改内存
-  
+
   
 
 而下面函数对于形参pT的修改，不会影响到实参
@@ -316,7 +410,7 @@ void printfT(Teacher pT)
 
 
 
-### 
+
 
 
 
@@ -331,8 +425,6 @@ void printfT(Teacher pT)
 
 
 ### 学习资源
-
-- 慕课网-C++远征系列课（共七篇）
 
 - B站 - 黑马程序员教程
   https://b23.tv/WbL7JB

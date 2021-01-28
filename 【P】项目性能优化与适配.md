@@ -4,6 +4,12 @@
 
 ### 一、性能优化
 
+### 电量优化
+
+Battery Historian工具
+
+使用 Android 8.0 及以上版本的设备时，使用Energy Profiler 可以了解应用在哪里耗用了不必要的电 量。
+
 
 
 #### Crash监控

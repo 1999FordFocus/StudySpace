@@ -107,7 +107,8 @@ webSettings.setJavaScriptCanOpenWindowsAutomatically(true); //支持通过JS打�
 webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
 webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
 
-
+//设置是否需要手动点击才能播放视频
+setMediaPlaybackRequiresUserGesture(true)
 ```
 
 ```java
@@ -430,6 +431,18 @@ https://chromium.googlesource.com/chromium/src.git/+/28cc253ce347f9a58a0e7c6b7b2
 
 ### 5. 项目问题排查
 
+-  【机型适配】VIVO设备 WebView 视频无法播放
+
+  WebSettings
+  
+  setMediaPlaybackRequiresUserGesture(true)
+  
+  默认是true，即html5中的视频，需要手动点击播放。
+  
+  但是VIVO部分设备上，手动点击也无法播放，改成setMediaPlaybackRequiresUserGesture(false)，自动播放解决问题。
+  
+  
+  
 -  【问题描述】 webview 设置为height = wrap_content 。第一次加载，html中打印innerWidth，innerHeight 都是0。
 
   attachToWindow 之前则可以，之后则不行。
@@ -458,7 +471,39 @@ https://chromium.googlesource.com/chromium/src.git/+/28cc253ce347f9a58a0e7c6b7b2
 
 3. 
 
-​	
+WebView onPageStart调用时机
+
+```
+01-22 18:28:18.296 23255 23255 D LiveShowUtil: {"liveUrl":"https://mountain.show.173.com/event/live/zhuxian/index.html?roomid=96","perWH":1.76,"perHH":0.78125,"perOffsetY":0.0,"bCanDrag":false}
+01-22 18:28:18.322   605   683 D ConnectivityService: listenForNetwork for Listen from uid/pid:10042/23255 for NetworkRequest [ id=39, legacyType=-1, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED] ]
+01-22 18:28:18.342 23255 23255 W cr_AwContents: onDetachedFromWindow called when already detached. Ignoring
+01-22 18:28:18.342 23255 23255 E LiveShowView: OnUpdateInfo->989, 562, 0, 0, 0, 0
+01-22 18:28:18.342 23255 23255 D activitysdk_log: init
+01-22 18:28:18.342 23255 23255 D activitysdk_log: debug = false
+01-22 18:28:18.348 23255 23255 I cr_Ime  : ImeThread is not enabled.
+01-22 18:28:18.349 23255 23255 E webview : loadurl=https://mountain.show.173.com/event/live/zhuxian/index.html?roomid=96
+01-22 18:28:18.349 23255 23255 E FreeView: OnUpdateInfo down
+01-22 18:28:18.407 23255 23433 E eglCodecCommon: glUtilsParamSize: unknow param 0x00008fbb
+01-22 18:28:18.407 23255 23433 E eglCodecCommon: glUtilsParamSize: unknow param 0x00008fbb
+01-22 18:28:18.425 23255 23255 W System.err: java.lang.NoSuchMethodException: uploadEventWithoutTaskId [class android.content.Context, class java.lang.String, interface java.util.Map]
+01-22 18:28:18.429 23255 23323 E eglCodecCommon: glUtilsParamSize: unknow param 0x00008fbb
+01-22 18:28:18.432 23255 23255 W System.err:    at java.lang.Class.getMethod(Class.java:624)
+01-22 18:28:18.432 23255 23255 W System.err:    at java.lang.Class.getDeclaredMethod(Class.java:586)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.wanmei.activity.dfga.a.uploadEvent(Unknown Source)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.wanmei.activity.dfga.b.uploadEvent(Unknown Source)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.wanmei.activity.dfga.b.a(Unknown Source)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.wanmei.activity.jsbridge.b.a(Unknown Source)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.wanmei.activity.jsbridge.WebViewBridgeManager.onPageStarted(Unknown Source)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.wanmei.activity.a$1.onPageStarted(Unknown Source)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.android.webview.chromium.WebViewContentsClientAdapter.onPageStarted(WebViewContentsClientAdapter.java:517)
+01-22 18:28:18.432 23255 23255 W System.err:    at org.chromium.android_webview.AwContentsClientCallbackHelper$MyHandler.handleMessage(AwContentsClientCallbackHelper.java:144)
+01-22 18:28:18.432 23255 23255 W System.err:    at android.os.Handler.dispatchMessage(Handler.java:102)
+01-22 18:28:18.432 23255 23255 W System.err:    at android.os.Looper.loop(Looper.java:148)
+01-22 18:28:18.432 23255 23255 W System.err:    at android.app.ActivityThread.main(ActivityThread.java:5606)
+01-22 18:28:18.432 23255 23255 W System.err:    at java.lang.reflect.Method.invoke(Native Method)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.android.internal.os.ZygoteInit$MethodAndArgsCaller.run(ZygoteInit.java:745)
+01-22 18:28:18.432 23255 23255 W System.err:    at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:635)
+```
 
 
 

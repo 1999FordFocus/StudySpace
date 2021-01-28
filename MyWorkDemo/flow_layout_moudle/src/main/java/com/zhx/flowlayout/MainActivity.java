@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.zhx.moudle.flow_layout.R;
 
-
-
 /**
  * Created by duoku_tech on 2017/4/18.
  */
